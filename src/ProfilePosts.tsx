@@ -1,8 +1,8 @@
 
-import { useEffect,useState } from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Spacer,Skeleton,SkeletonCircle,Grid} from '@chakra-ui/react'
+
+import {Flex,VStack,Box,Text,Skeleton,Grid} from '@chakra-ui/react'
 import ProfilePost from './ProfilePost'
-import usePostStore from './postStore'
+
 import useGetUserPosts from './useGetUserPost'
 
 

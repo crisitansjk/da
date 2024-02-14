@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import useAuthStore from './AuthStore'
 import { firestore, storage } from './firebase'
-import useShowToast from './useShowToast'
+
 import {doc,updateDoc} from "firebase/firestore"
 import {ref,uploadString,getDownloadURL} from "firebase/storage"
 
@@ -10,7 +10,7 @@ import useUserProfileStore from './userProfileStore'
 export default function useEditProfile() {
     const [isUpdating,setIsUpdating] = useState(false)
     const authUser = useAuthStore(state => state.user)
-    const showToast = useShowToast()
+   
     const setAuthUser = useAuthStore(state => state.setUser)
     const setUserProfile = useUserProfileStore(state => state.setUserProfile)
 

@@ -1,6 +1,6 @@
-import React from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Spacer,Divider,Skeleton,SkeletonCircle,useDisclosure,Grid,GridItem} from '@chakra-ui/react'
-import useUserProfileStore from './userProfileStore'
+
+import {Avatar,Flex,Text} from '@chakra-ui/react'
+
 import useGetUserById from './useGetUserById'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'

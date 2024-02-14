@@ -1,7 +1,7 @@
-import React from 'react'
+
 import Postfooter from './Postfooter'
 import Postheader from './Postheader'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip} from '@chakra-ui/react'
+import {Box,Image} from '@chakra-ui/react'
 import useGetUserById from './useGetUserById'
 
 

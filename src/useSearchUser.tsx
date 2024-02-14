@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { firestore } from './firebase'
 import useShowToast from './useShowToast'
 import {collection,getDocs,query,where} from "firebase/firestore"
@@ -6,7 +6,7 @@ import {collection,getDocs,query,where} from "firebase/firestore"
 export default function useSearchUser() {
     const [isLoading,setIsLoading] = useState(false)
     const [user,setUser] = useState(null)
-    const showToast = useShowToast()
+  
 
     const getUserProfile = async(username) => {
         setIsLoading(true)

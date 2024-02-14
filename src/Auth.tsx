@@ -1,5 +1,5 @@
-import React from 'react'
-import {Container,Flex,VStack,Box,Image,Center} from '@chakra-ui/react'
+
+import {Container,Flex,VStack,Box,Image} from '@chakra-ui/react'
 import Authform from './authform'
 
 function Auth() {

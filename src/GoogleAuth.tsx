@@ -1,16 +1,16 @@
-import React from 'react'
-import {Container,Flex,VStack,Box,Image,Input,Button,Text,InputGroup,InputRightElement} from '@chakra-ui/react'
+
+import {Flex,Image,Button,Text} from '@chakra-ui/react'
 
 import {useSignInWithGoogle} from "react-firebase-hooks/auth"
-import useShowToast from './useShowToast';
+
 import useAuthStore from './AuthStore';
 import { auth, firestore } from './firebase';
-import {doc,setDoc,collection,query,where,getDocs,getDoc} from "firebase/firestore"
-import useGetUserProfileByUsername from './useGetUserProfileByUsername';
+import {doc,setDoc,getDoc} from "firebase/firestore"
+
 
 export default function GoogleAuth({prefix}) {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const showToast = useShowToast()
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+
   const loginUser = useAuthStore((state)=>state.login)
 
   const signWithGoogle = async () => {
@@ -29,8 +29,9 @@ export default function GoogleAuth({prefix}) {
           profilePicURL:newUser.user.photoURL,
           follower:[],
           following:[],
-          post:[],
-          createdAt:Date.now()
+          posts:[],
+          createdAt:Date.now(),
+          notification:[],
         }
         await setDoc(doc(firestore,"users",newUser.user.uid),userDoc)
         localStorage.setItem("user-info",JSON.stringify(userDoc))

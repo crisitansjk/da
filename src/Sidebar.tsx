@@ -1,42 +1,24 @@
-import React from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip} from '@chakra-ui/react'
+
+import {Flex,Box,Button,Link,Tooltip} from '@chakra-ui/react'
 import {Link as RouterLink } from "react-router-dom"
-import { AiFillHome } from "react-icons/ai";
+
 import { InstagramLogo, InstagramMobileLogo } from './constants.tsx'
-import { CreatePostLogo, NotificationsLogo,SearchLogo } from './constants.tsx'
+
 import { RiLogoutBoxLine } from "react-icons/ri";
 import UseLogOut from './useLogOut';
 import SidebarItems from './SidebarItems';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Sidebar() {
-    const {handleLogOut,isLoggingOut,error} = UseLogOut()
-    const sidebarItems = [
-        {
-            icon:<AiFillHome size={"29px"} />,
-            text:"Home",
-            link:"/"
-        },
-        {
-            icon:<SearchLogo/>,
-            text:"Search",
-            link:""
-        },
-        {
-            icon:<NotificationsLogo/>,
-            text:"Notification",
-            link:""
-        },
-        {
-            icon:<CreatePostLogo/>,
-            text:"Create",
-            link:""
-        },
-        {
-            icon:<Avatar size={"sm"} name="a"/>,
-            text:"Profile",
-            link:""
-        },
-    ]
+    const {handleLogOut,isLoggingOut} = UseLogOut()
+    const {pathname} = useLocation()
+
+    const [activ,setActive ] = useState(false)
+
+
+  
+ 
   return (
     <Box 
     height={"100vh"}
@@ -50,14 +32,14 @@ function Sidebar() {
 
 
         <Flex direction={"column"} gap={10} w="full" height={"full"} >
-            <Link to={"/"} as={RouterLink} pl={2} display={{base:"none",md:"block"}} >
+            <Link to={"/"} as={RouterLink} pl={2} display={pathname !== "/Message" ? {base:"none",md:"block"} : "none" } >
                 <InstagramLogo/>
             </Link>
-            <Link to={"/"} as={RouterLink} p={2} display={{base:"block",md:"none"}} bordeRadius={6} _hover={{bg:"whiteAlpha.200"}} w={10}>
+            <Link to={"/"} as={RouterLink} p={2} display={pathname !=="/Message" ? {base:"block",md:"none"} :"block" } bordeRadius={6} _hover={{bg:"whiteAlpha.200"}} w={10}>
                 <InstagramMobileLogo/>
             </Link>
             <Flex direction={"column"} gap={5} cursor={"pointer"}>
-                <SidebarItems/>
+                <SidebarItems actv={activ}/>
 
 
             </Flex>
@@ -70,7 +52,7 @@ function Sidebar() {
 
                     ml={1}
                     openDelay={500}
-                    display={{base:"block",md:"none"}}>
+                    display={activ ? {base:"none",md:"block"}:{base:"block",md:"none"}}>
                         <Flex display={"flex"}
                         onClick={handleLogOut}
                         to={"/auth"}
@@ -84,7 +66,7 @@ function Sidebar() {
                         justifyContent={{base:"center",md:"flex-start"}}
                         mt={"auto"}>
                         <RiLogoutBoxLine/>
-                        <Button display={{base:"none",md:"block"}}
+                        <Button display={pathname !=="/Message" ? {base:"none",md:"block"}:"none"}
                         variant={"ghost"}
                         _hover={"transparent"}
                         size={"s"}

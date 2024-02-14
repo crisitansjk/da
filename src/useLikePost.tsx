@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { arrayRemove, arrayUnion, doc, updateDoc ,getDoc} from "firebase/firestore";
 import { firestore } from "./firebase";
 import useAuthStore from "./AuthStore";
 import useShowToast from "./useShowToast";
@@ -18,7 +18,10 @@ const useLikePost = (post) => {
 		setIsUpdating(true);
 
 		try {
+			
 			const postRef = doc(firestore, "posts", post.id);
+			const get = await getDoc(postRef)
+			const a = get.data()
 			await updateDoc(postRef, {
 				likes: isLiked ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid),
 			});

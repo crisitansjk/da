@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Spacer,Divider,Skeleton,SkeletonCircle,useDisclosure,Grid,GridItem} from '@chakra-ui/react'
+
+import {Avatar,Flex,VStack,Image,Button,Text,Divider,useDisclosure,GridItem} from '@chakra-ui/react'
 import {AiFillHeart} from "react-icons/ai"
 import {FaComment} from "react-icons/fa"
 import {MdDelete} from "react-icons/md"
 import  Comment  from './Comment'
-import { Link as RouterLink } from 'react-router-dom'
+
 
 import {
   Modal,
@@ -24,6 +24,7 @@ import { deleteObject, ref } from "firebase/storage";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { firestore, storage } from "./firebase";
 import Caption from './Caption'
+import { useState } from 'react'
 
 export default function ProfilePost({posts}) {
   const { isOpen, onOpen, onClose } = useDisclosure()

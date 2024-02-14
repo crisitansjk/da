@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,InputGroup,AvatarGroup,InputRightElement,useDisclosure} from '@chakra-ui/react'
+
+import {Avatar,Flex,VStack,Button,Text,AvatarGroup,useDisclosure} from '@chakra-ui/react'
 import useAuthStore from './AuthStore'
 import useUserProfileStore from './userProfileStore'
 import EditProfile from './EditProfile'
-import { getDatabase, ref, set } from "firebase/database";
-import { auth, firestore} from './firebase'
-import {doc,updateDoc } from "firebase/firestore"
+
 import useFollowUser from './useFollowUser'
 
 export default function ProfilHeader() {
@@ -14,8 +12,6 @@ export default function ProfilHeader() {
     const {isFollowing,isUpdating,handleFollowUser} = useFollowUser(userProfile?.uid)
     const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username
     const visitingAnotherUserProfile = authUser && authUser.username !== userProfile.username
-    const setAuthUser = useAuthStore(state => state.setUser)
-    const setUserProfile = useUserProfileStore(state => state.setUserProfile)
     const {isOpen,onOpen,onClose} = useDisclosure()
     
     
@@ -50,15 +46,15 @@ export default function ProfilHeader() {
             </Flex>
             <Flex gap={{base:2,sm:4}} align={"center"} >
                 <Flex >
-                    <Text mr={1}>{userProfile.posts.length}</Text>
+                    <Text mr={1}>{userProfile.posts && userProfile.posts.length}</Text>
                     Post
                 </Flex>
                 <Flex>
-                    <Text mr={1}>{userProfile.follower.length}</Text>
+                    <Text mr={1}>{userProfile.follower && userProfile.follower.length}</Text>
                     Fallowers
                 </Flex>
                 <Flex>
-                    <Text mr={1}>{userProfile.following.length}</Text>
+                    <Text mr={1}>{userProfile.following &&  userProfile.following.length}</Text>
                     Fallow
                 </Flex>
 

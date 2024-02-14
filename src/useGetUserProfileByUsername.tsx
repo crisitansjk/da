@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import useShowToast from './useShowToast'
-import { auth, firestore } from './firebase';
-import {doc,setDoc,collection,query,where,getDocs,getDoc} from "firebase/firestore"
+import {  firestore } from './firebase';
+import {collection,query,where,getDocs} from "firebase/firestore"
 import useUserProfileStore from './userProfileStore';
 
 export default function useGetUserProfileByUsername(username) {

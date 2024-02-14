@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Spacer,Skeleton,SkeletonCircle} from '@chakra-ui/react'
+
+import {Container,Flex,VStack,Box,Text,Skeleton,SkeletonCircle} from '@chakra-ui/react'
 import Feepost from './Feepost.tsx'
 import useGetFeedPosts from './useGetFeedPost'
 
@@ -10,7 +10,7 @@ function Feespost() {
 
   
   return (
-    <Container maxW={"container.sm"} py={10} px={2}>
+    <Container maxW={"container.sm"} py={10} px={2} >
       
             {isLoading && [1,2,3,4].map((item,index) => (
               <VStack key={index} gap={4} mb={10}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import useAuthStore from './AuthStore'
 import { firestore } from './firebase'
 import usePostStore from './postStore'
@@ -19,6 +19,7 @@ const usePostComment = () => {
         createdBy:authUser.uid,
         postId,
     }
+    
     try{
         await updateDoc(doc(firestore,"posts",postId),{
             comments:arrayUnion(newComment)

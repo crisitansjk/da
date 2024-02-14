@@ -1,23 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 
-import {Button} from '@chakra-ui/react'
+
 import { Home } from './Home.tsx'
-import {Routes,Route,Router,Navigate} from "react-router-dom"
+import {Routes,Route,Navigate} from "react-router-dom"
 import Auth from './Auth'
 import Pagelayout from './Pagelayout'
 import ProfilePage from './ProfilePage'
 
 import { auth } from "./firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
+import MessagePage from './MessagePage'
+
+import NotificationPage from './NotificationPage'
 
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
   const [authUser] = useAuthState(auth)
+
+
 
   return (
     <>
@@ -26,6 +28,10 @@ function App() {
       <Route path="/" element={authUser ? <Home/>:<Navigate to="/auth"/>}/>
       <Route path="/auth" element={!authUser ? <Auth/>:<Navigate to="/"/>}/>
       <Route path="/:username" element={<ProfilePage/>}/>
+      <Route path="Message" element={<MessagePage />}/>
+      <Route path="/Notification" element={<NotificationPage/>}/>
+
+
      </Routes>
      </Pagelayout>
      

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import  { useCallback } from 'react'
 import { useToast } from '@chakra-ui/react'
 
 export default function useShowToast() {

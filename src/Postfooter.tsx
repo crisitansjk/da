@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,InputGroup,InputRightElement,useDisclosure} from '@chakra-ui/react'
+import  { useRef, useState } from 'react'
+import {Flex,Box,Input,Button,Text,InputGroup,InputRightElement,useDisclosure} from '@chakra-ui/react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from './constants'
 import usePostComment from './usePostComment'
 import useAuthStore from './AuthStore'
 import useLikePost from './useLikePost'
-import { auth } from './firebase'
+
 import useGetUserById from './useGetUserById'
 import CommentsModal from './CommentModal'
 

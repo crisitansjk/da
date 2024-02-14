@@ -1,6 +1,6 @@
-import React from 'react'
+
 import {Avatar,Flex,Text} from "@chakra-ui/react"
-import {Link} from "react-router-dom"
+
 import TimeAgo from 'javascript-time-ago'
 import useUserProfileStore from './userProfileStore'
 import en from 'javascript-time-ago/locale/en'

@@ -1,12 +1,20 @@
-import React from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Spacer} from '@chakra-ui/react'
+
+import {Avatar,Flex,Box,Text} from '@chakra-ui/react'
 import useFollowUser from './useFollowUser'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
+
+
+
 function Postheader({post,creator}) {
+
     TimeAgo.addDefaultLocale(en)
     const timeAgo = new TimeAgo()
+
+    
+    
     if(creator){
+
         const {isFollowing,handleFollowUser,isUpdating} = useFollowUser(creator.uid)
     
     
@@ -15,6 +23,7 @@ function Postheader({post,creator}) {
     <>
     <Flex   align="center"  mt={5}>
         <Flex align={"center"} gap={2} >
+            
            
             {creator ? (
                  <Flex align={"center"} >

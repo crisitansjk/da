@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { render } from 'react-dom'
+import  { useState } from 'react'
+
 import useShowToast from './useShowToast'
 
 export default function usePreviewImg() {
     const [selectedFile,setSelectedFile] = useState(null)
-    const showToast = useShowToast()
+ 
     const maxFileSizing = 2 * 1024 * 1024
 
     const handleImageChange = (e) => {

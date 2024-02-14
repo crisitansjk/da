@@ -1,11 +1,13 @@
-import React from 'react'
-import {Container,Flex,VStack,Box,Image,Input,Button,Text,Spinner} from '@chakra-ui/react'
+
+import {Flex,Box,Spinner} from '@chakra-ui/react'
 import Sidebar from './Sidebar.tsx'
 import { useLocation } from 'react-router-dom'
-import useAuthStore from './AuthStore'
+
 import { auth } from './firebase'
 import {useAuthState} from "react-firebase-hooks/auth"
 import Navbar from './Navbar'
+
+
 
 
 function Pagelayout({children}) {
@@ -14,12 +16,14 @@ function Pagelayout({children}) {
     const canRanderSidebar = pathname !== "/auth" && user
     const canRanderNavbar = !user && !loading && pathname !== "/auth"
     const checkingUserIsAuth = !user && loading
+  
+  
     if(checkingUserIsAuth) return <PageLayoutSpinner/>
   return (
     <Flex flexDir={canRanderNavbar ? "column":"row"}>
         {
             canRanderSidebar  ? (
-                <Box w={{base:"70px", md:"240px"}}>
+                <Box w={pathname !== "/Message" ? {base:"70px", md:"240px"}:"70px"}>
                     <Sidebar/>
                 </Box>
             ):null

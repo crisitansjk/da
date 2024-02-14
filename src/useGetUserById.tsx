@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { firestore } from './firebase'
 import useShowToast from './useShowToast'
-import { arrayUnion, doc, getDoc } from "firebase/firestore";
+import {  doc, getDoc } from "firebase/firestore";
 const useGetUserById = (comment) => {
     const [isLoading,setIsLoading] = useState(false)
     const showToast = useShowToast()
@@ -15,6 +15,7 @@ const useGetUserById = (comment) => {
             setIsLoading(true)
             setUserProfile(null)
         try{
+            console.log(userId)
             const q = await getDoc(doc(firestore,"users",userId))
             if(q.exists()){
                 setUserProfile(q.data())

@@ -1,10 +1,12 @@
-import React from 'react'
-import useAuthStore from './AuthStore'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip} from '@chakra-ui/react'
-import {Link as RouterLink } from "react-router-dom"
 
-export default function ProfileLink() {
+import useAuthStore from './AuthStore'
+import {Avatar,Box,Link,Tooltip} from '@chakra-ui/react'
+import {Link as RouterLink } from "react-router-dom"
+import {useLocation} from "react-router-dom"
+
+export default function ProfileLink({actv}) {
     const authUser = useAuthStore((state)=>state.user)
+    const {pathname} = useLocation()
   return (
     <Tooltip
     hasArrow
@@ -14,7 +16,7 @@ export default function ProfileLink() {
 
     ml={1}
     openDelay={500}
-    display={{base:"block",md:"none"}}>
+    display={{base:"none",md:"block"}}>
         <Link display={"flex"}
         to={`${authUser?.username}`}
         as={RouterLink}
@@ -25,8 +27,8 @@ export default function ProfileLink() {
         p={2}
         w={{base:10,md:"full"}}
         justifyContent={{base:"center",md:"flex-start"}}>
-        <Avatar size={"sm"} src={authUser?.profilePicURL || ""}></Avatar>
-        <Box display={{base:"none",md:"block"}}>Profile</Box>
+        <Avatar size={"xs"} src={authUser?.profilePicURL || ""}></Avatar>
+        <Box display={pathname !== "/Message" ? {base:"none",md:"block"}:"none"}>Profile</Box>
         </Link>
 
     </Tooltip>

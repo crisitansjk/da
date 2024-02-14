@@ -1,12 +1,12 @@
-import React from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip} from '@chakra-ui/react'
+
+import {Box,Link,Tooltip} from '@chakra-ui/react'
 import {Link as RouterLink } from "react-router-dom"
 import { AiFillHome } from "react-icons/ai";
-import { InstagramLogo, InstagramMobileLogo } from './constants.tsx'
-import { CreatePostLogo, NotificationsLogo,SearchLogo } from './constants.tsx'
-import { RiLogoutBoxLine } from "react-icons/ri";
+import { useLocation } from 'react-router-dom';
 
-export default function HomeS() {
+
+export default function HomeS({actv}) {
+  const {pathname} = useLocation()
   return (
     <Tooltip 
                     hasArrow
@@ -16,7 +16,7 @@ export default function HomeS() {
 
                     ml={1}
                     openDelay={500}
-                    display={{base:"block",md:"none"}}>
+                    display={{base:"none",md:"block"}}>
                         <Link display={"flex"}
                         to={"/" ||  null}
                         as={RouterLink}
@@ -27,8 +27,8 @@ export default function HomeS() {
                         p={2}
                         w={{base:10,md:"full"}}
                         justifyContent={{base:"center",md:"flex-start"}}>
-                        <AiFillHome/>
-                        <Box display={{base:"none",md:"block"}}>"Home"</Box>
+                        <AiFillHome fontSize={22}/>
+                        <Box display={pathname !== "/Message" ? {base:"none",md:"block"}:"none"}>"Home"</Box>
                         </Link>
 
                     </Tooltip>

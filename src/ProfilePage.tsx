@@ -1,5 +1,5 @@
-import React from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,InputGroup,InputRightElement} from '@chakra-ui/react'
+
+import {Container,Flex,VStack,Text,Link} from '@chakra-ui/react'
 import ProfilHeader from './ProfilHeader'
 import ProfilTabs from './ProfilTabs'
 import ProfilePosts from './ProfilePosts'

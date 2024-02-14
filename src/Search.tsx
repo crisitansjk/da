@@ -1,16 +1,18 @@
-import React from 'react'
+
 import { SearchLogo } from './constants'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,useDisclosure,Modal,ModalOverlay,ModalContent,ModalHeader,ModalCloseButton
+import {Flex,Box,Input,Button,Tooltip,useDisclosure,Modal,ModalOverlay,ModalContent,ModalHeader,ModalCloseButton
 ,ModalBody,FormControl,FormLabel} from '@chakra-ui/react'
-import {Link as RouterLink } from "react-router-dom"
+
 import { SuggestedUser } from './SuggestedUser'
 import useSearchUser from './useSearchUser'
 import { useRef } from "react";
+import { useLocation } from 'react-router-dom';
 
-export default function Search() {
+export default function Search({actv}) {
     const {isOpen,onOpen,onClose} = useDisclosure()
     const {isLoading,user,getUserProfile,setUser} = useSearchUser()
     const searchRef = useRef(null);
+	const {pathname} = useLocation()
 
 
     const handleSearchUser = (e) => {
@@ -27,7 +29,7 @@ export default function Search() {
     				placement='right'
     				ml={1}
     				openDelay={500}
-    				display={{ base: "block", md: "none" }}
+    				display={{base:"none",md:"block"}}
     			>
     				<Flex
     					alignItems={"center"}
@@ -40,7 +42,7 @@ export default function Search() {
                         onClick={onOpen}
     				>
     					<SearchLogo />
-    					<Box display={{ base: "none", md: "block" }}>Search</Box>
+    					<Box display={pathname !== "/Message" ? {base:"none",md:"block"}:"none"}>Search</Box>
     				</Flex>
     			</Tooltip>
 
@@ -49,20 +51,21 @@ export default function Search() {
 				<ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
 					<ModalHeader>Search user</ModalHeader>
 					<ModalCloseButton />
-					<ModalBody pb={6}>
-						<form onSubmit={handleSearchUser}>
-							<FormControl>
+					<ModalBody pb={6} >
+						<form onSubmit={handleSearchUser} >
+							<FormControl mb={7}>
 								<FormLabel>Username</FormLabel>
+								<Flex align={"center"}>
 								<Input  ref={searchRef} />
-							</FormControl>
-
-							<Flex w={"full"} justifyContent={"flex-end"}>
 								<Button type='submit' ml={"auto"} size={"sm"} my={4} isLoading={isLoading}>
 									Search
 								</Button>
-							</Flex>
+								</Flex>
+							</FormControl>
+
+							
 						</form>
-						{user && <SuggestedUser user={user} setUser={setUser} />}
+						{user && <Flex mb={10}><SuggestedUser   user={user} setUser={setUser} /></Flex>}
 					</ModalBody>
 				</ModalContent>
 			</Modal>

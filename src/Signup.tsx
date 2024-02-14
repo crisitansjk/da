@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import {Container,Flex,VStack,Box,Image,Input,Button,Text,InputGroup,InputRightElement,Alert,AlertIcon} from '@chakra-ui/react'
+import  { useState } from 'react'
+import {Input,Button,InputGroup,InputRightElement,Alert,AlertIcon} from '@chakra-ui/react'
 import { ViewIcon } from '@chakra-ui/icons'
 import { ViewOffIcon } from '@chakra-ui/icons'
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+
 import UseSignupWhitEmail from './UseSignupWhitEmail';
 import { useToast } from '@chakra-ui/react'
 

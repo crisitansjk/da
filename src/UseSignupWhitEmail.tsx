@@ -1,5 +1,4 @@
-import React from 'react'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, firestore } from './firebase';
 import {doc,setDoc,collection,query,where,getDocs} from "firebase/firestore"
@@ -10,7 +9,7 @@ export default function UseSignupWhitEmail() {
     const [createUserWithEmailAndPassword,user,loading,error] = useCreateUserWithEmailAndPassword(auth)
     const showToast = useShowToast()
     const loginUser = useAuthStore(state => state.login)
-    const logoutUser = useAuthStore(state => state.logou)
+
 
     const signup = async (email,password,fullName,userName) => {
        
@@ -50,7 +49,8 @@ export default function UseSignupWhitEmail() {
                     follower:[],
                     following:[],
                     post:[],
-                    createdAt:Date.now()
+                    createdAt:Date.now(),
+                    notification:[],
                 }
                 await setDoc(doc(firestore,"users",newUser.user.uid),userDoc)
                 localStorage.setItem("user-info",JSON.stringify(userDoc))

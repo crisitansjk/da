@@ -1,5 +1,5 @@
-import React from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,InputGroup,AvatarGroup,InputRightElement} from '@chakra-ui/react'
+
+import {Flex,Box,Text} from '@chakra-ui/react'
 import {BsGrid3X3,BsBookmark,BsSuitHeart} from "react-icons/bs"
 
 export default function ProfilTabs() {

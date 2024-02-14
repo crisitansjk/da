@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Container,Flex,VStack,Box,Image,Input,Button,Text} from '@chakra-ui/react'
+import  { useState } from 'react'
+import {Flex,VStack,Box,Text} from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import Login from './Login'
 import Signup from './Signup'
@@ -8,7 +8,7 @@ import useShowToast from './useShowToast'
 
 function Authform() {
     const [isAuth,setIsAuth] = useState(true)
-    const [isLogin,setIsLogin] = useState(true)
+  
     const navigate = useNavigate()
     const showToast = useShowToast()
     const [inputs,setInputs] = useState({

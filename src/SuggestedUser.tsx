@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,InputGroup,InputRightElement} from '@chakra-ui/react'
+
+import {Avatar,Flex,VStack,Box,Button} from '@chakra-ui/react'
 import useFollowUser from './useFollowUser'
 import useAuthStore from './AuthStore'
 import { Link as RouterLink } from 'react-router-dom'

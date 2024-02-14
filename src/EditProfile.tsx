@@ -18,13 +18,12 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import useAuthStore from "./AuthStore";
-import { storage } from "./firebase";
+
 import usePreviewImg from "./usePreviewImg";
-import {doc,setDoc,collection,query,where,getDocs,getDoc} from "firebase/firestore"
-import { getStorage, ref, uploadString } from "firebase/storage";
+
 import useEditProfile from "./useEditProfile";
 const EditProfile = ({ isOpen, onClose }) => {
-    const userAuth = useAuthStore(state=>state.user)
+   
     const [inputs,setInputs] = useState({
         fullname:"",
         username:"",

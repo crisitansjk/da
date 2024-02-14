@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import  { useRef, useState } from 'react'
 import { CreatePostLogo } from './constants'
-import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Textarea,Modal,
+import {Flex,Box,Image,Input,Button,Tooltip,Textarea,Modal,
 	ModalBody,
 	ModalCloseButton,
 	ModalContent,
@@ -10,7 +10,7 @@ import {Avatar,Container,Flex,VStack,Box,Image,Input,Button,Text,Link,Tooltip,Te
     CloseButton,
 
 	useDisclosure,} from '@chakra-ui/react'
-import {Link as RouterLink } from "react-router-dom"
+
 import { useLocation } from 'react-router-dom';
 
 import { BsFillImageFill } from "react-icons/bs";
@@ -23,12 +23,14 @@ import { addDoc, arrayUnion, collection, doc, updateDoc } from "firebase/firesto
 import { firestore, storage } from "./firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
-export default function CreatePost() {
+
+export default function CreatePost({actv}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [caption,setCaption] = useState("")
     const imageRef = useRef(null)
     const {handleImageChange,selectedFile,setSelectedFile} = usePreviewImg()
     const { isLoading, handleCreatePost } = useCreatePost();
+	const {pathname} = useLocation()
     
     const handlePostCreation = async () => {
 		try {
@@ -50,7 +52,7 @@ export default function CreatePost() {
 
     ml={1}
     openDelay={500}
-    display={{base:"block",md:"none"}}>
+    display={actv ? {base:"none",md:"block"}:{base:"block",md:"none"}}>
         <Flex 
         alignItems={"center"}
         gap={4}
@@ -61,7 +63,7 @@ export default function CreatePost() {
         justifyContent={{base:"center",md:"flex-start"}} onClick={onOpen}>
         
         <CreatePostLogo/>
-        <Box display={{base:"none",md:"block"}}>Create</Box>
+        <Box display={pathname !== "/Message" ? {base:"none",md:"block"}:"none"}>Create</Box>
         </Flex>
 
     </Tooltip>
